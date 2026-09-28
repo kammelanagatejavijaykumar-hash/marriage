@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vijay ❤️ Kajal | Marriage Invitation</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@400;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:'Noto Serif Telugu',serif;
+    background:#160503;
+    color:#fff;
+}
+
+/* Main video container */
+.video{
+    width:100%;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Background */
+.scene{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.08);
+    transition:
+        opacity 1.5s ease,
+        transform 1.8s ease;
+}
+
+.scene.active{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+}
+
+/* Traditional background */
+.scene::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at center,
+        rgba(255,190,50,.18),
+        transparent 45%),
+        linear-gradient(135deg,#280603,#5e1108,#210402);
+    z-index:-3;
+}
+
+.scene::after{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:3px solid #d6a83c;
+    border-radius:20px;
+    box-shadow:
+        inset 0 0 30px rgba(255,190,50,.25),
+        0 0 25px rgba(255,190,50,.25);
+    z-index:-1;
+}
+
+/* Golden decorations */
+.decor{
+    position:absolute;
+    color:#e8bd4b;
+    font-size:35px;
+    opacity:.7;
+}
+
+.top-left{top:25px;left:25px}
+.top-right{top:25px;right:25px}
+.bottom-left{bottom:25px;left:25px}
+.bottom-right{bottom:25px;right:25px}
+
+/* Text */
+.small{
+    font-size:20px;
+    color:#f8d878;
+    letter-spacing:2px;
+}
+
+.telugu{
+    color:#ffe7a0;
+    font-size:25px;
+    line-height:1.7;
+}
+
+.gold{
+    color:#ffd45a;
+    text-shadow:0 0 15px rgba(255,195,50,.45);
+}
+
+.title{
+    font-size:42px;
+    color:#ffd75b;
+    margin:15px 0;
+    text-shadow:
+        0 0 10px #b87500,
+        0 0 25px rgba(255,200,50,.5);
+}
+
+.names{
+    font-size:45px;
+    font-weight:800;
+    color:#fff2bd;
+    margin:20px 0;
+    text-shadow:0 0 20px #ffb300;
+}
+
+.weds{
+    color:#ffca45;
+    font-size:28px;
+    margin:5px;
+}
+
+.divider{
+    width:180px;
+    height:2px;
+    background:#e5b83f;
+    margin:18px auto;
+    box-shadow:0 0 10px #e5b83f;
+}
+
+/* Vinayaka */
+.vinayaka{
+    width:230px;
+    height:230px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #e6bd52;
+    box-shadow:
+        0 0 20px #f6c74e,
+        0 0 60px rgba(255,170,0,.4);
+    animation:float 3s ease-in-out infinite;
+    background:#40100a;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+}
+
+/* Rings */
+.ring{
+    position:absolute;
+    width:300px;
+    height:300px;
+    border:1px solid rgba(255,210,80,.3);
+    border-radius:50%;
+    animation:rotate 15s linear infinite;
+}
+
+.ring2{
+    width:420px;
+    height:420px;
+    animation-direction:reverse;
+}
+
+@keyframes rotate{
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
+}
+
+/* Wedding card */
+.card{
+    max-width:700px;
+    width:100%;
+    padding:35px 25px;
+    border-radius:25px;
+    background:rgba(70,12,5,.7);
+    border:1px solid rgba(235,190,70,.6);
+    box-shadow:
+        0 0 40px rgba(255,180,40,.15),
+        inset 0 0 30px rgba(255,200,70,.06);
+    backdrop-filter:blur(5px);
+}
+
+.icon{
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+/* Date */
+.date{
+    font-size:35px;
+    color:#ffe18a;
+    font-weight:800;
+}
+
+.time{
+    font-size:22px;
+    color:#fff1c1;
+    margin:8px;
+}
+
+/* Saptapadi */
+.step{
+    max-width:720px;
+    width:100%;
+}
+
+.step-number{
+    width:75px;
+    height:75px;
+    margin:0 auto 15px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    font-weight:bold;
+    color:#5b0b04;
+    background:linear-gradient(145deg,#ffe88a,#c89024);
+    box-shadow:0 0 25px rgba(255,205,70,.6);
+}
+
+.step-title{
+    color:#ffd65b;
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.step-text{
+    font-size:20px;
+    line-height:1.8;
+    color:#ffe9ad;
+}
+
+/* Footer */
+.footer{
+    position:absolute;
+    bottom:35px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size:15px;
+    color:#d9bd72;
+}
+
+/* Petals */
+.petal{
+    position:absolute;
+    top:-30px;
+    font-size:20px;
+    animation:fall linear infinite;
+    opacity:.8;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-50px) rotate(0);
+        opacity:0;
+    }
+    10%{opacity:1}
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Controls */
+.controls{
+    position:fixed;
+    z-index:100;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:10px;
+}
+
+button{
+    border:1px solid #e5bd50;
+    background:rgba(50,10,5,.8);
+    color:#ffe18b;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+    .vinayaka{
+        width:170px;
+        height:170px;
+    }
+
+    .title{
+        font-size:30px;
+    }
+
+    .names{
+        font-size:34px;
+    }
+
+    .telugu{
+        font-size:19px;
+    }
+
+    .date{
+        font-size:28px;
+    }
+
+    .step-title{
+        font-size:24px;
+    }
+
+    .step-text{
+        font-size:17px;
+        line-height:1.65;
+    }
+
+    .card{
+        padding:25px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="video">
+
+    <!-- Floating petals -->
+    <div class="petal" style="left:8%;animation-duration:7s;">🌸</div>
+    <div class="petal" style="left:22%;animation-duration:9s;animation-delay:2s;">🌼</div>
+    <div class="petal" style="left:40%;animation-duration:8s;animation-delay:1s;">🌸</div>
+    <div class="petal" style="left:65%;animation-duration:10s;animation-delay:3s;">🌼</div>
+    <div class="petal" style="left:82%;animation-duration:7s;animation-delay:4s;">🌸</div>
+
+    <!-- SCENE 1 -->
+    <section class="scene active">
+
+        <div class="ring"></div>
+        <div class="ring ring2"></div>
+
+        <div>
+            <img
+                class="vinayaka"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Ganesh_Bhajan.jpg/640px-Ganesh_Bhajan.jpg"
+                alt="Lord Vinayaka">
+
+            <div class="divider"></div>
+
+            <div class="telugu">
+                శ్రీ గణేశాయ నమః
+            </div>
+
+            <div class="small">
+                OM GANAPATAYE NAMAH
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- SCENE 2 -->
+    <section class="scene">
+
+        <div class="card">
+
+            <div class="telugu gold">
+                శ్రీరస్తు శుభమస్తు అవిఘ్నమస్తు
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="telugu">
+                సర్వమంగళ మాంగల్యే<br>
+                శివే సర్వార్థ సాధికే<br>
+                శరణ్యే త్రయంబికే గౌరీ<br>
+                నారాయణి నమోస్తుతే
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="small">
+                WITH THE BLESSINGS OF THE ALMIGHTY
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCENE 3 -->
+    <section class="scene">
+
+        <div class="card">
+
+            <div class="icon">🌺</div>
+
+            <div class="telugu">
+                మా జీవితంలో ఒక కొత్త అధ్యాయానికి<br>
+                శ్రీకారం చుడుతున్న శుభవేళ...
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="small">
+                WE CORDIALLY INVITE YOU TO CELEBRATE
+            </div>
+
+            <div class="title">
+                OUR WEDDING
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCENE 4 -->
+    <section class="scene">
+
+        <div class="card">
+
+            <div class="small">TWO HEARTS • ONE JOURNEY</div>
+
+            <div class="names">
+                VIJAY
+            </div>
+
+            <div class="weds">
+                💛 WEDS 💛
+            </div>
+
+            <div class="names">
+                KAJAL
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="telugu">
+                విజయ్ &nbsp; 💍 &nbsp; కాజల్
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCENE 5 -->
+    <section class="scene">
+
+        <div class="card">
+
+            <div class="icon">📅</div>
+
+            <div class="small">
+                THE AUSPICIOUS DAY
+            </div>
+
+            <div class="date">
+                02 OCTOBER 2026
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="time">
+                🕗 వివాహ ముహూర్తం — 8:00 PM
+            </div>
+
+            <div class="time">
+                🍽️ విందు — 9:00 PM
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="telugu">
+                మీ రాకతో మా ఆనందం మరింత రెట్టింపవుతుంది
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCENE 6 -->
+    <section class="scene">
+
+        <div class="card">
+
+            <div class="icon">📍</div>
+
+            <div class="small">
+                WEDDING VENUE
+            </div>
+
+            <div class="title">
+                SK CONVENTION HALL
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="telugu">
+                రిసార్ట్<br>
+                SK కన్వెన్షన్ హాల్
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="small">
+                YOUR PRESENCE IS OUR BLESSING
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SAPTAPADI INTRO -->
+    <section class="scene">
+
+        <div class="card">
+
+            <div class="icon">🔥</div>
+
+            <div class="small">
+                THE SACRED SAPTAPADI
+            </div>
+
+            <div class="title">
+                సప్తపది
+            </div>
+
+            <div class="telugu">
+                అగ్నిసాక్షిగా వధూవరులు<br>
+                కలిసి వేసే ఏడు అడుగులు...
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="telugu">
+                ఈ ఏడు అడుగులు వారి జీవితాంతం<br>
+                ప్రేమ, నమ్మకం మరియు ఐక్యతకు ప్రతీకలు.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STEP 1 -->
+    <section class="scene">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <div class="step-title">
+                మొదటి అడుగు — ఆహారం & ఆరోగ్యం
+            </div>
+
+            <div class="step-text">
+                మన కుటుంబానికి అవసరమైన ఆహారం సమృద్ధిగా ఉండాలని,
+                ఆరోగ్యంగా మరియు ఆనందంగా జీవించాలని
+                వధూవరులు ఒకరికొకరు వాగ్దానం చేసుకుంటారు.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STEP 2 -->
+    <section class="scene">
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <div class="step-title">
+                రెండవ అడుగు — బలం
+            </div>
+
+            <div class="step-text">
+                జీవితంలో ఎదురయ్యే ప్రతి పరిస్థితిని ధైర్యంగా ఎదుర్కొంటూ,
+                శారీరకంగా మరియు మానసికంగా ఒకరికొకరు బలంగా
+                నిలబడతామని వాగ్దానం చేసుకుంటారు.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STEP 3 -->
+    <section class="scene">
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <div class="step-title">
+                మూడవ అడుగు — సంపద & అభివృద్ధి
+            </div>
+
+            <div class="step-text">
+                కుటుంబ అభివృద్ధి కోసం కలిసి కష్టపడుతూ,
+                ధర్మబద్ధంగా సంపదను సంపాదించి,
+                జీవితాన్ని సంతోషంగా నిర్మించుకోవాలని ప్రతిజ్ఞ చేస్తారు.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STEP 4 -->
+    <section class="scene">
+
+        <div class="step">
+
+            <div class="step-number">4</div>
+
+            <div class="step-title">
+                నాలుగవ అడుగు — ప్రేమ & ఆనందం
+            </div>
+
+            <div class="step-text">
+                ప్రేమ, పరస్పర గౌరవం మరియు కుటుంబ ఆనందాన్ని
+                జీవితాంతం కాపాడుకుంటూ,
+                ప్రతి సంతోషాన్ని కలిసి పంచుకోవాలని వాగ్దానం చేస్తారు.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STEP 5 -->
+    <section class="scene">
+
+        <div class="step">
+
+            <div class="step-number">5</div>
+
+            <div class="step-title">
+                ఐదవ అడుగు — కుటుంబం
+            </div>
+
+            <div class="step-text">
+                మంచి సంతానం, కుటుంబ సంక్షేమం మరియు
+                పెద్దల ఆశీర్వాదాలను గౌరవిస్తూ,
+                ప్రేమతో కూడిన కుటుంబాన్ని నిర్మించాలని సంకల్పిస్తారు.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STEP 6 -->
+    <section class="scene">
+
+        <div class="step">
+
+            <div class="step-number">6</div>
+
+            <div class="step-title">
+                ఆరవ అడుగు — ఋతువుల వలె జీవితం
+            </div>
+
+            <div class="step-text">
+                జీవితంలో సుఖదుఃఖాలు, మార్పులు వచ్చినా
+                ఒకరికొకరు తోడుగా ఉంటూ,
+                ప్రతి కాలాన్ని కలిసి ఎదుర్కొందామని ప్రతిజ్ఞ చేస్తారు.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STEP 7 -->
+    <section class="scene">
+
+        <div class="step">
+
+            <div class="step-number">7</div>
+
+            <div class="step-title">
+                ఏడవ అడుగు — జీవితాంతం స్నేహం
+            </div>
+
+            <div class="step-text">
+                జీవితాంతం మంచి స్నేహితులుగా,
+                నమ్మకంతో, ప్రేమతో, పరస్పర గౌరవంతో
+                కలిసి నడుస్తామని వధూవరులు ప్రతిజ్ఞ చేస్తారు.
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="telugu">
+                సఖా సప్తపదా భవ
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="scene">
+
+        <div class="card">
+
+            <div class="icon">💐</div>
+
+            <div class="title">
+                మా వివాహానికి విచ్చేయండి
+            </div>
+
+            <div class="telugu">
+                మీ ఆశీస్సులతో మా కొత్త జీవితాన్ని<br>
+                ప్రారంభించేందుకు మమ్మల్ని ఆశీర్వదించండి.
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="names">
+                VIJAY ❤️ KAJAL
+            </div>
+
+            <div class="small">
+                02 • 10 • 2026
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="telugu gold">
+                మీ రాకే మా ఆహ్వానానికి సంపూర్ణత
+            </div>
+
+        </div>
+
+        <div class="footer">
+            శ్రీరస్తు • శుభమస్తు • అవిఘ్నమస్తు
+        </div>
+
+    </section>
+
+</div>
+
+
+<div class="controls">
+    <button onclick="previousScene()">◀</button>
+    <button onclick="togglePlay()" id="playBtn">⏸</button>
+    <button onclick="nextScene()">▶</button>
+</div>
+
+
+<script>
+
+const scenes = document.querySelectorAll(".scene");
+
+let current = 0;
+let playing = true;
+let timer;
+
+function showScene(index){
+
+    scenes[current].classList.remove("active");
+
+    current = (index + scenes.length) % scenes.length;
+
+    scenes[current].classList.add("active");
+
+}
+
+function nextScene(){
+    showScene(current + 1);
+    restartTimer();
+}
+
+function previousScene(){
+    showScene(current - 1);
+    restartTimer();
+}
+
+function restartTimer(){
+
+    clearInterval(timer);
+
+    if(playing){
+        timer = setInterval(nextScene,6000);
+    }
+
+}
+
+function togglePlay(){
+
+    playing = !playing;
+
+    document.getElementById("playBtn").textContent =
+        playing ? "⏸" : "▶";
+
+    if(playing){
+        restartTimer();
+    }else{
+        clearInterval(timer);
+    }
+
+}
+
+/* Start animation */
+restartTimer();
+
+</script>
+
+</body>
+</html>
